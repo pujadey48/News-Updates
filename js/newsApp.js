@@ -97,8 +97,18 @@ const displayNewsDetails = (news) => {
   modalTitle.innerText = news.title;
   const newsDetails = document.getElementById("news-details");
   newsDetails.innerText = news.details;
-  const newsDetailsImage = document.getElementById("news-details-image");
-  newsDetailsImage.src = news.image_url;
+ const imageCol = document.getElementById("image-col");
+ imageCol.innerHTML = `
+ <img id="news-details-image" src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+ <p class="card-text d-flex justify-content-around mt-2"><span><img id="author-image" src="${
+    news.author.img
+  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
+    news.author.name ? news.author.name : "No data available"
+  } </small></span> 
+    <span><small class="text-muted"><i class="fa-solid fa-eye"></i>${
+    news.total_view ? news.total_view : "No data available"
+  } </small></span></p>
+ `
 };
 
 window.onload = (event) => {
