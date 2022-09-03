@@ -49,7 +49,7 @@
       ></div>
     </header>
     <main>
-      <!-- catagories  -->
+      <!-- categories  -->
       <section class="container">
         <nav class="navbar navbar-expand-lg">
           <div class="container-fluid">
@@ -65,7 +65,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul id="catagories-ul-id" class="navbar-nav nav-fill w-100">
+              <ul id="categories-ul-id" class="navbar-nav nav-fill w-100">
                 <!-- <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
@@ -95,8 +95,50 @@
                 </div>
               </div> -->
         </div>
-
+        <!-- not found  -->
+      <div id="no-found-message" class="mt-4 d-none ">
+        <h3 class="text-warning">No news found in this category. Please select another category</h3>
+    </div>
       </section>
+
+      <!-- modal start -->
+      <section>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitleDetails">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img id="news-details-image" src="" class="img-fluid rounded-start" alt="...">
+                    <p><span><img id="author-image" src="" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">Author Name: </small></span></p> 
+                    <p><span><small class="text-muted"><i class="fa-solid fa-eye"></i> </small></span></p>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <p id="news-details" class="card-text"></p>
+                      <p class="card-text"><small class="text-muted"></small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+      </section>
+      
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
