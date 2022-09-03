@@ -18,7 +18,7 @@ const displayCategories = (data) => {
       const categoryLi = document.createElement("li");
       categoryLi.classList.add("nav-item");
       categoryLi.innerHTML = `
-        <a class="nav-link" href="#/" onclick="loadCategoryData('${category.category_id}')">${category.category_name}</a>
+        <a class="nav-link category-nav-item" href="#/" onclick="loadCategoryData('${category.category_id}', '${category.category_name}', this)">${category.category_name}</a>
     `;
       categoriesUl.appendChild(categoryLi);
 
@@ -43,24 +43,35 @@ const toggleSpinner = isLoading => {
     }
 }
 
-const loadCategoryData = async (categoryId) => {
+const selectActiveNavItem = (node) => {
+    const collection = document.getElementsByClassName("category-nav-item");
+    for( const navItem of collection){
+        navItem.classList.remove("active");
+    };
+
+    node.classList.add("active");
+}
+
+const loadCategoryData = async (categoryId, categoryName, node) => {
   try {
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayCategoryData(data);
+    displayCategoryData(data, categoryName, node);
   } catch (error) {
     console.error(error);
   }
 };
 
-const displayCategoryData = (data) => {
+const displayCategoryData = (data, categoryName, node) => {
   try {
     console.log(data);
     const newses = data.data;
     newses.sort((first, second) => second.total_view - first.total_view);
     console.log(newses);
+    const itemsFoundLength = document.getElementById("item-found-by-category");
+    itemsFoundLength.value = newses.length + " items found in " +categoryName ;
     const cardContainer = document.getElementById("card-container");
     const noFound = document.getElementById("no-found-message");
     if (newses.length === 0) {
@@ -109,6 +120,7 @@ const displayCategoryData = (data) => {
       cardContainer.appendChild(card);
     }
     toggleSpinner(false);
+    selectActiveNavItem(node);
   } catch (error) {
     console.error(error);
   }

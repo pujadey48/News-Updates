@@ -11,8 +11,11 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/0ee19f5bcb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/0ee19f5bcb.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="container">
@@ -36,9 +39,8 @@
             id="navbarNavAltMarkup"
           >
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Blogs</a>
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                <a class="nav-link" href="blogs.html">Blogs</a>
             </div>
           </div>
         </div>
@@ -78,18 +80,33 @@
           </div>
         </nav>
       </section>
+      <!-- item found by category section  -->
+      <section class="container">
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="item-found-by-category"
+            aria-describedby="emailHelp"
+          />
+        </div>
+      </section>
+
       <!-- loader section  -->
       <section id="loader" class="d-none">
-        <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
-            <div class="spinner-border  text-success" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
+        <div
+          style="height: 400px"
+          class="d-flex justify-content-center align-items-center"
+        >
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
-    </section>
+      </section>
       <!-- card section  -->
-      <section class="container">
+      <section class="container mb-5">
         <div id="card-container">
-            <!-- <div id="card-id" class="card mb-3" style="max-width: 540px;">
+          <!-- <div id="card-id" class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img src="..." class="img-fluid rounded-start" alt="...">
@@ -105,50 +122,81 @@
               </div> -->
         </div>
         <!-- not found  -->
-      <div id="no-found-message" class="mt-4 d-none ">
-        <h3 class="text-warning">No news found in this category. Please select another category</h3>
-    </div>
+        <div id="no-found-message" class="mt-4 d-none">
+          <h3 class="text-warning">
+            No news found in this category. Please select another category
+          </h3>
+        </div>
       </section>
 
       <!-- modal start -->
       <section>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalTitleDetails">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="card mb-3">
-                <div class="row g-0">
-                  <div id="image-col" class="col-md-4">
-                    <!-- <img id="news-details-image" src="" class="img-fluid rounded-start" alt="...">
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleDetails">Modal title</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="card mb-3">
+                  <div class="row g-0">
+                    <div id="image-col" class="col-md-4">
+                      <!-- <img id="news-details-image" src="" class="img-fluid rounded-start" alt="...">
                     <p><span><img id="author-image" src="" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">Author Name: </small></span></p> 
                     <p><span><small class="text-muted"><i class="fa-solid fa-eye"></i> </small></span></p> -->
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <p id="news-details" class="card-text"></p>
-                      <p class="card-text"><small class="text-muted"></small></p>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <p id="news-details" class="card-text"></p>
+                        <p class="card-text">
+                          <small class="text-muted"></small>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-  
       </section>
-      
+      <div class="placeholder" style="height: 20px;"></div>
     </main>
+    <footer>
+        <div class="container-fluid">
+            <!-- <div class="row align-items-center justify-content-lg-between"> -->
+        
+            <div class="fixed-bottom bg-dark text-center text-white p-3 small">
+                ©2025. NEWS Updates. All rights reserved. Sofia, Bulgaria. 
+            </div>
+        </div>
+    </footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
