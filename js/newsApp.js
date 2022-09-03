@@ -32,25 +32,23 @@ const displayCategories = (data) => {
   }
 };
 
-
-const toggleSpinner = isLoading => {
-    const loaderSection = document.getElementById('loader');
-    if(isLoading){
-        loaderSection.classList.remove('d-none')
-    }
-    else{
-        loaderSection.classList.add('d-none');
-    }
-}
+const toggleSpinner = (isLoading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isLoading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
+};
 
 const selectActiveNavItem = (node) => {
-    const collection = document.getElementsByClassName("category-nav-item");
-    for( const navItem of collection){
-        navItem.classList.remove("active");
-    };
+  const collection = document.getElementsByClassName("category-nav-item");
+  for (const navItem of collection) {
+    navItem.classList.remove("active");
+  }
 
-    node.classList.add("active");
-}
+  node.classList.add("active");
+};
 
 const loadCategoryData = async (categoryId, categoryName, node) => {
   try {
@@ -91,7 +89,6 @@ const displayCategoryData = (data, categoryName) => {
       const card = document.createElement("div");
       card.classList.add("card");
       card.classList.add("mb-3");
-      // card.style.cssText += 'color:red;background-color:yellow';
 
       card.innerHTML = `
             <div class="row g-0" onclick="loadNewsDetails('${
@@ -108,18 +105,24 @@ const displayCategoryData = (data, categoryName) => {
                   <p class="card-text " style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;">${
                     news.details
                   }</p>
-                  <p class="card-text d-flex justify-content-around align-items-center">
+                  <div class="card-text d-flex justify-content-around align-items-center">
                   <span><img src="${
                     news.author.img
                   }" class="rounded-circle" alt="" width="40" height="40"> <small class="text-muted">Author Name: ${
         news.author.name != null ? news.author.name : "No data available"
-      }</small></span> 
+      }</small></span> <span><small class="text-muted">Published Date: ${
+        news.author.published_date != null
+          ? news.author.published_date
+          : "No data available"
+      }</small></span>
                   <span><small class="text-muted"><i class="fa-solid fa-eye"></i> ${
-                    news.total_view != null ? news.total_view : "No data available"
+                    news.total_view != null
+                      ? news.total_view
+                      : "No data available"
                   }</small></span> 
                   <span onclick="loadNewsDetails('${
                     news._id
-                  }')" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <i class="fa-solid fa-arrow-right"></i></span> </p>
+                  }')" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <i class="fa-solid fa-arrow-right"></i></span> </div>
                 </div>
               </div>
             </div>
@@ -155,14 +158,19 @@ const displayNewsDetails = (news) => {
  <img id="news-details-image" src="${
    news.image_url
  }" class="img-fluid rounded-start" alt="...">
- <p class="card-text d-flex justify-content-around align-items-center mt-2"><span><img id="author-image" src="${
+ <div class="card-text d-flex justify-content-around align-items-center mt-2"><span><img id="author-image" src="${
    news.author.img
  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
       news.author.name != null ? news.author.name : "No data available"
     } </small></span> 
     <span><small class="text-muted"><i class="fa-solid fa-eye"></i> ${
-      news.total_view != null? news.total_view : "No data available"
-    } </small></span></p>
+      news.total_view != null ? news.total_view : "No data available"
+    } </small></span></div>
+    <div class="card-text d-flex justify-content-around align-items-center mt-2"> <small class="text-muted"> Published Date: ${
+      news.author.published_date != null
+        ? news.author.published_date
+        : "No data available"
+    } </small> </div>
  `;
   } catch (error) {
     console.error(error);
