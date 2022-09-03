@@ -112,10 +112,10 @@ const displayCategoryData = (data, categoryName) => {
                   <span><img src="${
                     news.author.img
                   }" class="rounded-circle" alt="" width="40" height="40"> <small class="text-muted">Author Name: ${
-        news.author.name ? news.author.name : "No data available"
+        news.author.name != null ? news.author.name : "No data available"
       }</small></span> 
                   <span><small class="text-muted"><i class="fa-solid fa-eye"></i> ${
-                    news.total_view ? news.total_view : "No data available"
+                    news.total_view != null ? news.total_view : "No data available"
                   }</small></span> 
                   <span onclick="loadNewsDetails('${
                     news._id
@@ -158,10 +158,10 @@ const displayNewsDetails = (news) => {
  <p class="card-text d-flex justify-content-around align-items-center mt-2"><span><img id="author-image" src="${
    news.author.img
  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
-      news.author.name ? news.author.name : "No data available"
+      news.author.name != null ? news.author.name : "No data available"
     } </small></span> 
     <span><small class="text-muted"><i class="fa-solid fa-eye"></i>${
-      news.total_view ? news.total_view : "No data available"
+      news.total_view != null? news.total_view : "No data available"
     } </small></span></p>
  `;
   } catch (error) {
