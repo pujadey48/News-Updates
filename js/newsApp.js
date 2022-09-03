@@ -6,8 +6,6 @@ const loadCategories = async () => {
     displayCategories(data);
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
 
@@ -31,21 +29,29 @@ const displayCategories = (data) => {
     });
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
 
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none')
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
+
 const loadCategoryData = async (categoryId) => {
   try {
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     const res = await fetch(url);
     const data = await res.json();
     displayCategoryData(data);
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
 
@@ -102,10 +108,9 @@ const displayCategoryData = (data) => {
   `;
       cardContainer.appendChild(card);
     }
+    toggleSpinner(false);
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
 
@@ -117,10 +122,9 @@ const loadNewsDetails = async (news_id) => {
     displayNewsDetails(data.data[0]);
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
+
 const displayNewsDetails = (news) => {
   try {
     console.log(news);
@@ -144,8 +148,6 @@ const displayNewsDetails = (news) => {
  `;
   } catch (error) {
     console.error(error);
-    // expected output: ReferenceError: nonExistentFunction is not defined
-    // Note - error messages will vary depending on browser
   }
 };
 
