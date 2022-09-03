@@ -73,7 +73,7 @@ const displayCategoryData = (data, categoryName) => {
     console.log(newses);
 
     const itemsFoundLength = document.getElementById("item-found-by-category");
-    itemsFoundLength.innerText = newses.length + " items found in " +categoryName ;
+    itemsFoundLength.innerText = `${newses.length} items found in ${categoryName}`;
 
     const cardContainer = document.getElementById("card-container");
     const noFound = document.getElementById("no-found-message");
@@ -85,7 +85,7 @@ const displayCategoryData = (data, categoryName) => {
       noFound.classList.add("d-none");
       itemsFoundLength.parentNode.classList.remove("d-none");
     }
-    
+
     cardContainer.textContent = "";
     for (const news of newses) {
       const card = document.createElement("div");
@@ -108,7 +108,7 @@ const displayCategoryData = (data, categoryName) => {
                   <p class="card-text " style="overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;">${
                     news.details
                   }</p>
-                  <p class="card-text d-flex justify-content-around">
+                  <p class="card-text d-flex justify-content-around align-items-center">
                   <span><img src="${
                     news.author.img
                   }" class="rounded-circle" alt="" width="40" height="40"> <small class="text-muted">Author Name: ${
@@ -131,7 +131,7 @@ const displayCategoryData = (data, categoryName) => {
     console.error(error);
   }
 };
-
+//  modal.........
 const loadNewsDetails = async (news_id) => {
   try {
     const url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
@@ -155,7 +155,7 @@ const displayNewsDetails = (news) => {
  <img id="news-details-image" src="${
    news.image_url
  }" class="img-fluid rounded-start" alt="...">
- <p class="card-text d-flex justify-content-around mt-2"><span><img id="author-image" src="${
+ <p class="card-text d-flex justify-content-around align-items-center mt-2"><span><img id="author-image" src="${
    news.author.img
  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
       news.author.name ? news.author.name : "No data available"
