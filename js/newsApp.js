@@ -54,31 +54,38 @@ const selectActiveNavItem = (node) => {
 
 const loadCategoryData = async (categoryId, categoryName, node) => {
   try {
+    selectActiveNavItem(node);
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayCategoryData(data, categoryName, node);
+    displayCategoryData(data, categoryName);
   } catch (error) {
     console.error(error);
   }
 };
 
-const displayCategoryData = (data, categoryName, node) => {
+const displayCategoryData = (data, categoryName) => {
   try {
     console.log(data);
     const newses = data.data;
     newses.sort((first, second) => second.total_view - first.total_view);
     console.log(newses);
+
     const itemsFoundLength = document.getElementById("item-found-by-category");
-    itemsFoundLength.value = newses.length + " items found in " +categoryName ;
+    itemsFoundLength.innerText = newses.length + " items found in " +categoryName ;
+
     const cardContainer = document.getElementById("card-container");
     const noFound = document.getElementById("no-found-message");
+
     if (newses.length === 0) {
       noFound.classList.remove("d-none");
+      itemsFoundLength.parentNode.classList.add("d-none");
     } else {
       noFound.classList.add("d-none");
+      itemsFoundLength.parentNode.classList.remove("d-none");
     }
+    
     cardContainer.textContent = "";
     for (const news of newses) {
       const card = document.createElement("div");
@@ -120,7 +127,6 @@ const displayCategoryData = (data, categoryName, node) => {
       cardContainer.appendChild(card);
     }
     toggleSpinner(false);
-    selectActiveNavItem(node);
   } catch (error) {
     console.error(error);
   }
