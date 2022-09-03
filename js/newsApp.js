@@ -160,7 +160,7 @@ const displayNewsDetails = (news) => {
  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
       news.author.name != null ? news.author.name : "No data available"
     } </small></span> 
-    <span><small class="text-muted"><i class="fa-solid fa-eye"></i>${
+    <span><small class="text-muted"><i class="fa-solid fa-eye"></i> ${
       news.total_view != null? news.total_view : "No data available"
     } </small></span></p>
  `;
