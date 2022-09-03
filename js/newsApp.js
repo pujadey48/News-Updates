@@ -1,56 +1,75 @@
 const loadCategories = async () => {
-  const url = `https://openapi.programming-hero.com/api/news/categories`;
-  const res = await fetch(url);
-  const data = await res.json();
-  displayCategories(data);
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/categories`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayCategories(data);
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
 };
 
 const displayCategories = (data) => {
-  console.log(data);
-  const categoriesUl = document.getElementById("categories-ul-id");
-  let index = 0;
-  data.data.news_category.forEach((category) => {
-    const categoryLi = document.createElement("li");
-    categoryLi.classList.add("nav-item");
-    categoryLi.innerHTML = `
+  try {
+    console.log(data);
+    const categoriesUl = document.getElementById("categories-ul-id");
+    let index = 0;
+    data.data.news_category.forEach((category) => {
+      const categoryLi = document.createElement("li");
+      categoryLi.classList.add("nav-item");
+      categoryLi.innerHTML = `
         <a class="nav-link" href="#/" onclick="loadCategoryData('${category.category_id}')">${category.category_name}</a>
     `;
-    categoriesUl.appendChild(categoryLi);
+      categoriesUl.appendChild(categoryLi);
 
-    if(index == 0){
+      if (index == 0) {
         categoryLi.firstElementChild.click();
-    }
-    index++;
-  });
+      }
+      index++;
+    });
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
 };
 
 const loadCategoryData = async (categoryId) => {
-  const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  displayCategoryData(data);
+  try {
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayCategoryData(data);
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
 };
 
 const displayCategoryData = (data) => {
-  console.log(data);
-  const newses = data.data;
-  newses.sort((first, second) => second.total_view - first.total_view);
-  console.log(newses);
-  const cardContainer = document.getElementById("card-container");
-  const noFound = document.getElementById("no-found-message");
-  if (newses.length === 0) {
-    noFound.classList.remove("d-none");
-  } else {
-    noFound.classList.add("d-none");
-  }
-  cardContainer.textContent = "";
-  for (const news of newses) {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.classList.add("mb-3");
-    // card.style.cssText += 'color:red;background-color:yellow';
+  try {
+    console.log(data);
+    const newses = data.data;
+    newses.sort((first, second) => second.total_view - first.total_view);
+    console.log(newses);
+    const cardContainer = document.getElementById("card-container");
+    const noFound = document.getElementById("no-found-message");
+    if (newses.length === 0) {
+      noFound.classList.remove("d-none");
+    } else {
+      noFound.classList.add("d-none");
+    }
+    cardContainer.textContent = "";
+    for (const news of newses) {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.classList.add("mb-3");
+      // card.style.cssText += 'color:red;background-color:yellow';
 
-    card.innerHTML = `
+      card.innerHTML = `
             <div class="row g-0" onclick="loadNewsDetails('${
               news._id
             }')" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -69,8 +88,8 @@ const displayCategoryData = (data) => {
                   <span><img src="${
                     news.author.img
                   }" class="rounded-circle" alt="" width="40" height="40"> <small class="text-muted">Author Name: ${
-      news.author.name ? news.author.name : "No data available"
-    }</small></span> 
+        news.author.name ? news.author.name : "No data available"
+      }</small></span> 
                   <span><small class="text-muted"><i class="fa-solid fa-eye"></i> ${
                     news.total_view ? news.total_view : "No data available"
                   }</small></span> 
@@ -81,34 +100,53 @@ const displayCategoryData = (data) => {
               </div>
             </div>
   `;
-    cardContainer.appendChild(card);
+      cardContainer.appendChild(card);
+    }
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
   }
 };
 
 const loadNewsDetails = async (news_id) => {
-  const url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  displayNewsDetails(data.data[0]);
+  try {
+    const url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsDetails(data.data[0]);
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
 };
 const displayNewsDetails = (news) => {
-  console.log(news);
-  const modalTitle = document.getElementById("modalTitleDetails");
-  modalTitle.innerText = news.title;
-  const newsDetails = document.getElementById("news-details");
-  newsDetails.innerText = news.details;
- const imageCol = document.getElementById("image-col");
- imageCol.innerHTML = `
- <img id="news-details-image" src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+  try {
+    console.log(news);
+    const modalTitle = document.getElementById("modalTitleDetails");
+    modalTitle.innerText = news.title;
+    const newsDetails = document.getElementById("news-details");
+    newsDetails.innerText = news.details;
+    const imageCol = document.getElementById("image-col");
+    imageCol.innerHTML = `
+ <img id="news-details-image" src="${
+   news.image_url
+ }" class="img-fluid rounded-start" alt="...">
  <p class="card-text d-flex justify-content-around mt-2"><span><img id="author-image" src="${
-    news.author.img
-  }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
-    news.author.name ? news.author.name : "No data available"
-  } </small></span> 
+   news.author.img
+ }" class="rounded-circle" alt="" width="40" height="40"> <small id="author-name" class="text-muted">${
+      news.author.name ? news.author.name : "No data available"
+    } </small></span> 
     <span><small class="text-muted"><i class="fa-solid fa-eye"></i>${
-    news.total_view ? news.total_view : "No data available"
-  } </small></span></p>
- `
+      news.total_view ? news.total_view : "No data available"
+    } </small></span></p>
+ `;
+  } catch (error) {
+    console.error(error);
+    // expected output: ReferenceError: nonExistentFunction is not defined
+    // Note - error messages will vary depending on browser
+  }
 };
 
 window.onload = (event) => {
